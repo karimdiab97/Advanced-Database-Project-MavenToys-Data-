@@ -1,0 +1,87 @@
+# Database Requirement Document
+
+## Database Name: Mexico_Toy_Sales
+__________________________________
+
+## Purpose:
+The Mexico Toy Sales database is designed to manage sales and inventory data for Maven Toys, a fictional chain of toy stores in Mexico. The database aims to provide a comprehensive solution for tracking products, stores, sales transactions, and inventory levels, supporting retail operations and business analytics.
+__________________________________
+
+## Tables:
+
+### 1. Products
+- **Attributes:**
+  - Product_ID (Primary Key)
+  - Product_Name (Non-nullable)
+  - Product_Category
+  - Product_Cost (USD, Non-nullable)
+  - Product_Price (USD, Non-nullable)
+
+### 2. Inventory
+- **Attributes:**
+  - Store_ID (Foreign Key referencing Stores)
+  - Product_ID (Foreign Key referencing Products)
+  - Stock_On_Hand (Non-nullable)
+
+
+### 3. Stores
+- **Attributes:**
+  - Store_ID (Primary Key)
+  - Store_Name (Non-nullable)
+  - Store_City
+  - Store_Location
+  - Store_Open_Date (Non-nullable)
+
+### 4. Sales
+- **Attributes:**
+  - Sale_ID (Primary Key)
+  - Date (Non-nullable)
+  - Store_ID (Foreign Key referencing Stores)
+  - Product_ID (Foreign Key referencing Products)
+  - Units (Non-nullable)
+
+### 5. Calendar
+- **Attributes:**
+  - Date (Primary Key)
+
+## Constraints:
+
+### 1. Primary Keys:
+- Products: Product_ID
+- Inventory: (Store_ID, Product_ID)
+- Stores: Store_ID
+- Sales: Sale_ID
+- Calendar: Date
+
+### 2. Foreign Keys:
+- Inventory: Store_ID (References Stores.Store_ID), Product_ID (References Products.Product_ID)
+- Sales: Store_ID (References Stores.Store_ID), Product_ID (References Products.Product_ID)
+__________________________________
+
+### Relationships Summary:
+
+### 1. Products - Inventory: 
+      One-to-Many :relationship from Products (1) to Inventory (Many) based on Product_ID.	
+							
+### 2.Stores - Inventory :							
+      One-to-Many: relationship from Stores (1) to Inventory (Many) based on Store_ID.							
+							
+### 3.Stores - Sales:							
+      One-to-Many: relationship from Stores (1) to Sales (Many) based on Store_ID.							
+							
+### 4.Products - Sales :							
+     One-to-Many: relationship from Products (1) to Sales (Many) based on Product_ID.							
+						
+__________________________________
+
+## Data Structure:
+- Total Records: 829,263
+__________________________________
+
+## Project Description:
+The Mexico Toy Sales database is an integral part of Maven Toys' information system. It supports retail activities by capturing and organizing data related to products, stores, daily sales transactions, and inventory levels. The database aids in decision-making processes, inventory management, and performance analysis.
+__________________________________
+## Tags:
+- Retail
+- Time Series
+- Geospatial
